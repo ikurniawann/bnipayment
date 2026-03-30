@@ -53,13 +53,13 @@ export function getIcon(name: string) {
 
 export const menuItems: MenuItem[] = [
   {
-    label: "Home",
+    label: "Dashboard",
     href: "/",
-    iconName: "Home",
+    iconName: "LayoutDashboard",
   },
   {
-    label: "Dashboard",
-    iconName: "LayoutDashboard",
+    label: "Payment",
+    iconName: "CreditCard",
     submenu: [
       { label: "Outstanding Payment", href: "/dashboard/outstanding", iconName: "CreditCard" },
       { label: "Awaiting Payment", href: "/dashboard/awaiting", iconName: "Clock" },
