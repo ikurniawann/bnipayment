@@ -25,7 +25,7 @@ export default function RenewalPage() {
         memberName: m.name,
         chapter: m.chapter,
         status: m.status,
-        paymentStatus: m.status === "Active" ? "Paid" : "Pending",
+        paymentStatus: m.status === "Active" ? "Paid" : "Awaiting",
         date: m.joinDate,
       }))} />
     </div>
