@@ -21,7 +21,7 @@ export default function OverduePage() {
           color="red"
         />
       </div>
-      <MemberTable data={overduePayments} />
+      <MemberTable data={overduePayments} title="Overdue Payment" />
     </div>
   );
 }

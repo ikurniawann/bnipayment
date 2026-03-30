@@ -19,7 +19,7 @@ export default function AwaitingPage() {
           color="amber"
         />
       </div>
-      <MemberTable data={awaitingPayments} />
+      <MemberTable data={awaitingPayments} title="Awaiting Payment" />
     </div>
   );
 }

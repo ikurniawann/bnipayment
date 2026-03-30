@@ -21,7 +21,7 @@ export default function OutstandingPage() {
           color="red"
         />
       </div>
-      <MemberTable data={outstandingPayments} />
+      <MemberTable data={outstandingPayments} title="Outstanding Payment" />
     </div>
   );
 }

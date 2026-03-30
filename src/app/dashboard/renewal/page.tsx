@@ -27,7 +27,7 @@ export default function RenewalPage() {
         status: m.status,
         paymentStatus: m.status === "Active" ? "Paid" : "Awaiting",
         date: m.joinDate,
-      }))} />
+      }))} title="Renewal This Month" />
     </div>
   );
 }
