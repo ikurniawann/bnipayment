@@ -4,7 +4,7 @@ import { useState } from "react";
 import StatCard from "@/components/dashboard/StatCard";
 import MemberTable from "@/components/dashboard/MemberTable";
 import { paymentRecords, paymentStats } from "@/lib/dummy-data";
-import { CheckCircle, Send, X, Mail, AlertTriangle } from "lucide-react";
+import { CheckCircle, Send, X, AlertTriangle } from "lucide-react";
 
 export default function OverduePage() {
   const overduePayments = paymentRecords.filter(
