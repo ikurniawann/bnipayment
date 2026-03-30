@@ -73,7 +73,8 @@ export default function MasterDataPage() {
       {/* Content */}
       {activeTab === "chapters" && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="overflow-x-auto">
+          {/* Desktop Table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
@@ -105,6 +106,35 @@ export default function MasterDataPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className="md:hidden divide-y divide-gray-100">
+            {chapters.map((chapter) => (
+              <div key={chapter.id} className="p-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">{chapter.name}</p>
+                    <p className="text-xs text-gray-500">{chapter.code}</p>
+                  </div>
+                  <span className="px-2.5 py-1 text-xs bg-success/10 text-success rounded-full">{chapter.status}</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-xs text-gray-500 uppercase">Region</span>
+                    <span className="text-sm text-gray-900">{chapter.region}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs text-gray-500 uppercase">Members</span>
+                    <span className="text-sm text-gray-900">{chapter.members}</span>
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
+                  <button className="flex-1 px-3 py-2 text-xs border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">Edit</button>
+                  <button className="flex-1 px-3 py-2 text-xs border border-gray-200 rounded-lg text-danger hover:bg-red-50">Delete</button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -141,7 +171,8 @@ export default function MasterDataPage() {
 
       {activeTab === "regions" && (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="overflow-x-auto">
+          {/* Desktop Table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
@@ -166,6 +197,31 @@ export default function MasterDataPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className="md:hidden divide-y divide-gray-100">
+            {regions.map((region) => (
+              <div key={region.id} className="p-4">
+                <div className="mb-3">
+                  <p className="text-sm font-medium text-gray-900">{region.name}</p>
+                  <p className="text-xs text-gray-500">{region.code}</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-xs text-gray-500 uppercase">Chapters</span>
+                    <span className="text-sm text-gray-900">{region.chapters}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs text-gray-500 uppercase">Total Members</span>
+                    <span className="text-sm text-gray-900">{region.members}</span>
+                  </div>
+                </div>
+                <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
+                  <button className="flex-1 px-3 py-2 text-xs border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50">Edit</button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}

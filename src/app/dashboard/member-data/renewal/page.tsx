@@ -13,7 +13,8 @@ export default function NeedRenewalPage() {
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
+        {/* Desktop Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
@@ -51,6 +52,41 @@ export default function NeedRenewalPage() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {needRenewal.map((member) => (
+            <div key={member.id} className="p-4">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-bni-primary/10 flex items-center justify-center text-bni-primary text-sm font-medium flex-shrink-0">
+                  {member.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">{member.name}</p>
+                  <p className="text-xs text-gray-500">{member.email}</p>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-xs text-gray-500 uppercase">Chapter</span>
+                  <span className="text-sm text-gray-900">{member.chapter}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-xs text-gray-500 uppercase">Join Date</span>
+                  <span className="text-sm text-gray-900">{new Date(member.joinDate).toLocaleDateString("id-ID")}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-xs text-gray-500 uppercase">Status</span>
+                  <StatusBadge status={member.status} />
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-xs text-gray-500 uppercase">Renewal Status</span>
+                  <span className="px-2 py-1 text-xs bg-warning/10 text-warning rounded-full">Needs Renewal</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
