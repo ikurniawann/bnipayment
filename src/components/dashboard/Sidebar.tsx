@@ -12,7 +12,7 @@ import { menuItems, getIcon, type MenuItem } from "@/lib/menu-data";
 
 export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const pathname = usePathname();
-  const [openMenus, setOpenMenus] = useState<string[]>(["Dashboard", "Member Data"]);
+  const [openMenus, setOpenMenus] = useState<string[]>([]);
 
   const toggleMenu = (label: string) => {
     setOpenMenus((prev) =>
