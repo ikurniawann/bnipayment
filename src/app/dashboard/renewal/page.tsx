@@ -36,7 +36,7 @@ export default function RenewalPage() {
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-gray-900">Konfirmasi Kirim Pengingat Renewal</h2>
+              <h2 className="text-xl font-semibold text-gray-900">Konfirmasi Kirim Invoice Renewal</h2>
               <button
                 onClick={() => !sending && setShowConfirmModal(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -46,7 +46,7 @@ export default function RenewalPage() {
               </button>
             </div>
             <p className="text-sm text-gray-500 mt-1">
-              {needRenewal.length} pengingat renewal akan dikirim
+              {needRenewal.length} invoice renewal akan dikirim
             </p>
           </div>
 
@@ -111,10 +111,10 @@ export default function RenewalPage() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Berhasil!</h2>
             <p className="text-gray-600 mb-2">
-              {needRenewal.length} pengingat renewal berhasil terkirim
+              {needRenewal.length} invoice renewal berhasil dikirim
             </p>
             <p className="text-sm text-gray-500">
-              Email pengingat renewal telah dikirim ke semua member
+              Email invoice renewal telah dikirim ke semua member
             </p>
           </div>
           <div className="p-6 bg-gray-50 border-t border-gray-100">
@@ -152,7 +152,7 @@ export default function RenewalPage() {
           </div>
           <div className="mt-4">
             <p className="text-3xl font-bold text-gray-900">Kirim</p>
-            <p className="text-sm text-gray-500 mt-1">Sent All Reminder</p>
+            <p className="text-sm text-gray-500 mt-1">Sent All Invoice</p>
           </div>
         </button>
       </div>

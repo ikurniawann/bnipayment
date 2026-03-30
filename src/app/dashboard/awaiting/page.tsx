@@ -36,7 +36,7 @@ export default function AwaitingPage() {
         <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-gray-900">Konfirmasi Kirim Invoice</h2>
+              <h2 className="text-xl font-semibold text-gray-900">Konfirmasi Kirim Reminder</h2>
               <button
                 onClick={() => !sending && setShowConfirmModal(false)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -46,7 +46,7 @@ export default function AwaitingPage() {
               </button>
             </div>
             <p className="text-sm text-gray-500 mt-1">
-              {awaitingPayments.length} invoice akan dikirim
+              {awaitingPayments.length} reminder akan dikirim
             </p>
           </div>
 
@@ -111,10 +111,10 @@ export default function AwaitingPage() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Berhasil!</h2>
             <p className="text-gray-600 mb-2">
-              {awaitingPayments.length} invoice berhasil dikirim
+              {awaitingPayments.length} reminder berhasil dikirim
             </p>
             <p className="text-sm text-gray-500">
-              Email invoice telah dikirim ke semua member
+              Email reminder telah dikirim ke semua member
             </p>
           </div>
           <div className="p-6 bg-gray-50 border-t border-gray-100">
@@ -152,7 +152,7 @@ export default function AwaitingPage() {
           </div>
           <div className="mt-4">
             <p className="text-3xl font-bold text-gray-900">Kirim</p>
-            <p className="text-sm text-gray-500 mt-1">Sent All Invoice</p>
+            <p className="text-sm text-gray-500 mt-1">Sent All Reminder</p>
           </div>
         </button>
       </div>
