@@ -8,7 +8,7 @@ import {
   ChevronRight,
   X,
 } from "lucide-react";
-import { menuItems, getIcon, type MenuItem, type SubMenuItem } from "@/lib/menu-data";
+import { menuItems, getIcon, type MenuItem } from "@/lib/menu-data";
 
 export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const pathname = usePathname();
