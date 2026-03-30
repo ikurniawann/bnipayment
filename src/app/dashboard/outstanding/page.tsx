@@ -3,7 +3,7 @@
 import { useState } from "react";
 import StatCard from "@/components/dashboard/StatCard";
 import MemberTable from "@/components/dashboard/MemberTable";
-import { paymentRecords, paymentStats, PaymentRecord } from "@/lib/dummy-data";
+import { paymentRecords, paymentStats } from "@/lib/dummy-data";
 import { CheckCircle, Send, X, Mail } from "lucide-react";
 
 export default function OutstandingPage() {
