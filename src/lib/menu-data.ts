@@ -1,5 +1,6 @@
 import {
   LayoutDashboard,
+  Home,
   CreditCard,
   Clock,
   RefreshCw,
@@ -30,6 +31,7 @@ export interface MenuItem {
 }
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Home,
   LayoutDashboard,
   CreditCard,
   Clock,
@@ -50,6 +52,11 @@ export function getIcon(name: string) {
 }
 
 export const menuItems: MenuItem[] = [
+  {
+    label: "Home",
+    href: "/",
+    iconName: "Home",
+  },
   {
     label: "Dashboard",
     iconName: "LayoutDashboard",
