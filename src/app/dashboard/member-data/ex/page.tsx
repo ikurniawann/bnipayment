@@ -1,6 +1,5 @@
 "use client";
 
-import { UserMinus } from "lucide-react";
 import StatusBadge from "@/components/dashboard/StatusBadge";
 import { members } from "@/lib/dummy-data";
 

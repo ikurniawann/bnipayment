@@ -1,6 +1,5 @@
 "use client";
 
-import { Clock } from "lucide-react";
 import StatCard from "@/components/dashboard/StatCard";
 import MemberTable from "@/components/dashboard/MemberTable";
 import { paymentRecords, paymentStats } from "@/lib/dummy-data";

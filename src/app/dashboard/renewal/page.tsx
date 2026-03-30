@@ -1,6 +1,5 @@
 "use client";
 
-import { RefreshCw } from "lucide-react";
 import StatCard from "@/components/dashboard/StatCard";
 import MemberTable from "@/components/dashboard/MemberTable";
 import { members, paymentStats } from "@/lib/dummy-data";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Search, Database } from "lucide-react";
+import { Plus } from "lucide-react";
 
 export default function MasterDataPage() {
   const [activeTab, setActiveTab] = useState("chapters");
