@@ -8,19 +8,19 @@ export default function SubscriptionDataPage() {
   const [search, setSearch] = useState("");
 
   const subscriptions = [
-    { id: "s001", memberId: "m001", memberName: "Ahmad Wijaya", plan: "Premium", amount: 2500000, status: "Active", startDate: "2024-01-15", endDate: "2025-01-15" },
-    { id: "s002", memberId: "m002", memberName: "Siti Nurhaliza", plan: "Basic", amount: 1500000, status: "Active", startDate: "2024-02-20", endDate: "2025-02-20" },
-    { id: "s003", memberId: "m003", memberName: "Budi Santoso", plan: "Premium", amount: 2500000, status: "Pending", startDate: "2024-03-10", endDate: "2025-03-10" },
-    { id: "s004", memberId: "m004", memberName: "Dewi Lestari", plan: "Basic", amount: 1500000, status: "Active", startDate: "2024-01-05", endDate: "2025-01-05" },
-    { id: "s005", memberId: "m005", memberName: "Hendra Pratama", plan: "Premium", amount: 2500000, status: "Expired", startDate: "2023-12-01", endDate: "2024-12-01" },
-    { id: "s006", memberId: "m006", memberName: "Rina Kusuma", plan: "Basic", amount: 1500000, status: "Active", startDate: "2024-04-15", endDate: "2025-04-15" },
-    { id: "s007", memberId: "m007", memberName: "Joko Widodo", plan: "Premium", amount: 2500000, status: "Expired", startDate: "2023-11-20", endDate: "2024-11-20" },
-    { id: "s008", memberId: "m008", memberName: "Lina Marlina", plan: "Basic", amount: 1500000, status: "Active", startDate: "2024-05-01", endDate: "2025-05-01" },
+    { id: "s001", memberId: "m001", memberName: "Ahmad Wijaya", chapter: "Premium", amount: 13000000, status: "Active", startDate: "2024-01-15", endDate: "2025-01-15" },
+    { id: "s002", memberId: "m002", memberName: "Siti Nurhaliza", chapter: "Basic", amount: 13000000, status: "Active", startDate: "2024-02-20", endDate: "2025-02-20" },
+    { id: "s003", memberId: "m003", memberName: "Budi Santoso", chapter: "Premium", amount: 13000000, status: "Pending", startDate: "2024-03-10", endDate: "2025-03-10" },
+    { id: "s004", memberId: "m004", memberName: "Dewi Lestari", chapter: "Basic", amount: 13000000, status: "Active", startDate: "2024-01-05", endDate: "2025-01-05" },
+    { id: "s005", memberId: "m005", memberName: "Hendra Pratama", chapter: "Premium", amount: 13000000, status: "Expired", startDate: "2023-12-01", endDate: "2024-12-01" },
+    { id: "s006", memberId: "m006", memberName: "Rina Kusuma", chapter: "Basic", amount: 13000000, status: "Active", startDate: "2024-04-15", endDate: "2025-04-15" },
+    { id: "s007", memberId: "m007", memberName: "Joko Widodo", chapter: "Premium", amount: 13000000, status: "Expired", startDate: "2023-11-20", endDate: "2024-11-20" },
+    { id: "s008", memberId: "m008", memberName: "Lina Marlina", chapter: "Basic", amount: 13000000, status: "Active", startDate: "2024-05-01", endDate: "2025-05-01" },
   ];
 
   const filtered = subscriptions.filter((s) =>
     s.memberName.toLowerCase().includes(search.toLowerCase()) ||
-    s.plan.toLowerCase().includes(search.toLowerCase())
+    s.chapter.toLowerCase().includes(search.toLowerCase())
   );
 
   const formatCurrency = (amount: number) => {
@@ -63,7 +63,7 @@ export default function SubscriptionDataPage() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Member</th>
-                <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Plan</th>
+                <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Chapter</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Start Date</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">End Date</th>
@@ -85,7 +85,7 @@ export default function SubscriptionDataPage() {
                       </div>
                     </div>
                   </td>
-                  <td className="px-5 py-4 text-sm font-medium text-gray-900">{sub.plan}</td>
+                  <td className="px-5 py-4 text-sm font-medium text-gray-900">{sub.chapter}</td>
                   <td className="px-5 py-4 text-sm text-gray-600">{formatCurrency(sub.amount)}</td>
                   <td className="px-5 py-4 text-sm text-gray-600">{new Date(sub.startDate).toLocaleDateString("id-ID")}</td>
                   <td className="px-5 py-4 text-sm text-gray-600">{new Date(sub.endDate).toLocaleDateString("id-ID")}</td>
@@ -119,8 +119,8 @@ export default function SubscriptionDataPage() {
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-xs text-gray-500 uppercase">Plan</span>
-                  <span className="text-sm font-medium text-gray-900">{sub.plan}</span>
+                  <span className="text-xs text-gray-500 uppercase">Chapter</span>
+                  <span className="text-sm font-medium text-gray-900">{sub.chapter}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-xs text-gray-500 uppercase">Amount</span>
