@@ -32,8 +32,6 @@ export default function MemberTable({ data, title = "Recent Member Activity" }: 
     setSelectedRecord(null);
   };
 
-  const headers = ["Name", "Chapter", "Status", "Payment", "Date", "Actions"];
-
   return (
     <>
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
