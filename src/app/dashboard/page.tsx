@@ -16,7 +16,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 xl:grid-cols-5 gap-4">
         <StatCard
           iconName="CreditCard"
           value={paymentStats.outstanding}
@@ -24,6 +24,12 @@ export default function DashboardPage() {
           trend="+12%"
           trendDirection="up"
           color="red"
+        />
+        <StatCard
+          iconName="Send"
+          value="Kirim"
+          label="Sent All Invoice"
+          color="blue"
         />
         <StatCard
           iconName="Clock"

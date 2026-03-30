@@ -1,7 +1,7 @@
 "use client";
 
 import { 
-  CreditCard, Clock, RefreshCw, AlertTriangle,
+  CreditCard, Clock, RefreshCw, AlertTriangle, Send,
   TrendingUp, TrendingDown, Minus 
 } from "lucide-react";
 
@@ -19,6 +19,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Clock,
   RefreshCw,
   AlertTriangle,
+  Send,
 };
 
 const colorClasses = {

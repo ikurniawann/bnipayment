@@ -135,23 +135,28 @@ export default function OutstandingPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard
-            iconName="CreditCard"
-            value={paymentStats.outstanding}
-            label="Outstanding Payment"
-            trend="+12%"
-            trendDirection="up"
-            color="red"
-          />
-        </div>
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+        <StatCard
+          iconName="CreditCard"
+          value={paymentStats.outstanding}
+          label="Outstanding Payment"
+          trend="+12%"
+          trendDirection="up"
+          color="red"
+        />
         <button
           onClick={handleSentAllInvoice}
-          className="flex items-center gap-2 px-4 py-2 bg-bni-primary hover:bg-bni-dark text-white rounded-lg font-medium transition-colors"
+          className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-bni-primary hover:shadow-md transition-all text-left group"
         >
-          <Send className="w-4 h-4" />
-          Sent All Invoice
+          <div className="flex items-start justify-between">
+            <div className="p-3 rounded-lg bg-blue-500/10 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+              <Send className="w-6 h-6" />
+            </div>
+          </div>
+          <div className="mt-4">
+            <p className="text-3xl font-bold text-gray-900">Kirim</p>
+            <p className="text-sm text-gray-500 mt-1">Sent All Invoice</p>
+          </div>
         </button>
       </div>
       <MemberTable data={outstandingPayments} title="Outstanding Payment" />
