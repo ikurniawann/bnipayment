@@ -18,7 +18,7 @@ export default function MemberDataPage() {
     return matchesSearch && matchesChapter && matchesStatus;
   });
 
-  const chapters = ["All", "Jakarta Utara", "Jakarta Selatan", "BSD", "Surabaya", "Bandung"];
+  const chapters = ["All", "Grow", "Rise", "Amplify", "Glorify", "Magnify", "Garuda"];
 
   return (
     <div className="space-y-6">
