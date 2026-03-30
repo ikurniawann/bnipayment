@@ -1,8 +1,14 @@
-import { CreditCard, Clock, RefreshCw, AlertTriangle } from "lucide-react";
+"use client";
+
+import dynamic from "next/dynamic";
 import StatCard from "@/components/dashboard/StatCard";
 import MemberTable from "@/components/dashboard/MemberTable";
-import PaymentDonutChart from "@/components/dashboard/PaymentDonutChart";
 import { paymentRecords, paymentStats } from "@/lib/dummy-data";
+
+const PaymentDonutChart = dynamic(
+  () => import("@/components/dashboard/PaymentDonutChart"),
+  { ssr: false, loading: () => <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 h-64 animate-pulse" /> }
+);
 
 export default function DashboardPage() {
   const recentRecords = paymentRecords.slice(0, 6);
@@ -12,7 +18,7 @@ export default function DashboardPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
         <StatCard
-          icon={CreditCard}
+          iconName="CreditCard"
           value={paymentStats.outstanding}
           label="Outstanding"
           trend="+12%"
@@ -20,7 +26,7 @@ export default function DashboardPage() {
           color="red"
         />
         <StatCard
-          icon={Clock}
+          iconName="Clock"
           value={paymentStats.awaiting}
           label="Awaiting Confirmation"
           trend="-5%"
@@ -28,7 +34,7 @@ export default function DashboardPage() {
           color="amber"
         />
         <StatCard
-          icon={RefreshCw}
+          iconName="RefreshCw"
           value={paymentStats.renewal}
           label="Renewal This Month"
           trend="0%"
@@ -36,7 +42,7 @@ export default function DashboardPage() {
           color="blue"
         />
         <StatCard
-          icon={AlertTriangle}
+          iconName="AlertTriangle"
           value={paymentStats.overdue}
           label="Overdue"
           trend="+3"

@@ -1,15 +1,25 @@
 "use client";
 
-import { LucideIcon, TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { 
+  CreditCard, Clock, RefreshCw, AlertTriangle,
+  TrendingUp, TrendingDown, Minus 
+} from "lucide-react";
 
 interface StatCardProps {
-  icon: LucideIcon;
+  iconName: string;
   value: number | string;
   label: string;
   trend?: string;
   trendDirection?: "up" | "down" | "neutral";
   color?: "red" | "amber" | "blue" | "green";
 }
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  CreditCard,
+  Clock,
+  RefreshCw,
+  AlertTriangle,
+};
 
 const colorClasses = {
   red: "bg-bni-primary/10 text-bni-primary",
@@ -25,13 +35,14 @@ const trendColorClasses = {
 };
 
 export default function StatCard({
-  icon: Icon,
+  iconName,
   value,
   label,
   trend,
   trendDirection = "neutral",
   color = "red",
 }: StatCardProps) {
+  const Icon = iconMap[iconName] || CreditCard;
   const TrendIcon =
     trendDirection === "up"
       ? TrendingUp
