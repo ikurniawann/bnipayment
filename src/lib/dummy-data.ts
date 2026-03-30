@@ -15,6 +15,7 @@ export interface PaymentRecord {
   id: string;
   memberId: string;
   memberName: string;
+  email?: string;
   chapter: string;
   status: MemberStatus;
   paymentStatus: "Paid" | "Outstanding" | "Awaiting" | "Overdue";
@@ -219,6 +220,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p001",
     memberId: "m001",
     memberName: "Ahmad Wijaya",
+    email: "ahmad.wijaya@example.com",
     chapter: "Garuda",
     status: "Active",
     paymentStatus: "Paid",
@@ -229,6 +231,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p002",
     memberId: "m002",
     memberName: "Siti Nurhaliza",
+    email: "siti.nurhaliza@example.com",
     chapter: "Magnify",
     status: "Active",
     paymentStatus: "Outstanding",
@@ -239,6 +242,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p003",
     memberId: "m003",
     memberName: "Budi Santoso",
+    email: "budi.santoso@example.com",
     chapter: "Amplify",
     status: "Pending",
     paymentStatus: "Awaiting",
@@ -249,6 +253,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p004",
     memberId: "m004",
     memberName: "Dewi Lestari",
+    email: "dewi.lestari@example.com",
     chapter: "Rise",
     status: "Active",
     paymentStatus: "Paid",
@@ -259,6 +264,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p005",
     memberId: "m005",
     memberName: "Hendra Pratama",
+    email: "hendra.pratama@example.com",
     chapter: "Glorify",
     status: "Overdue",
     paymentStatus: "Overdue",
@@ -269,6 +275,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p006",
     memberId: "m006",
     memberName: "Rina Kusuma",
+    email: "rina.kusuma@example.com",
     chapter: "Garuda",
     status: "Active",
     paymentStatus: "Paid",
@@ -279,6 +286,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p007",
     memberId: "m007",
     memberName: "Joko Widodo",
+    email: "joko.widodo@example.com",
     chapter: "Magnify",
     status: "Expired",
     paymentStatus: "Overdue",
@@ -289,6 +297,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p008",
     memberId: "m008",
     memberName: "Lina Marlina",
+    email: "lina.marlina@example.com",
     chapter: "Amplify",
     status: "Active",
     paymentStatus: "Outstanding",
@@ -299,6 +308,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p009",
     memberId: "m009",
     memberName: "Maman Suherman",
+    email: "maman.suherman@example.com",
     chapter: "Rise",
     status: "Pending",
     paymentStatus: "Awaiting",
@@ -309,6 +319,7 @@ export const paymentRecords: PaymentRecord[] = [
     id: "p010",
     memberId: "m010",
     memberName: "Nina Agustina",
+    email: "nina.agustina@example.com",
     chapter: "Glorify",
     status: "Active",
     paymentStatus: "Paid",
