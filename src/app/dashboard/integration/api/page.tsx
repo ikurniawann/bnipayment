@@ -1,161 +1,245 @@
 "use client";
 
-import { useState } from "react";
-import { Database, CheckCircle, XCircle, RefreshCw, Key, Globe } from "lucide-react";
+import { useState, useEffect } from "react";
+import { 
+  CheckCircle, 
+  XCircle, 
+  RefreshCw, 
+  FileText, 
+  Clock,
+  AlertTriangle,
+  Link2
+} from "lucide-react";
 
-interface APIConnection {
-  id: string;
-  name: string;
-  type: string;
-  status: "Connected" | "Disconnected";
-  lastSync: string;
-  endpoint: string;
-}
+export default function PaperIDConnectionPage() {
+  const [isConnected, setIsConnected] = useState<boolean | null>(null);
+  const [isChecking, setIsChecking] = useState(false);
+  const [lastSync, setLastSync] = useState<string>("Never");
 
-const connections: APIConnection[] = [
-  {
-    id: "conn001",
-    name: "BNI Core API",
-    type: "REST API",
-    status: "Connected",
-    lastSync: "2024-03-31 14:30",
-    endpoint: "https://api.bni.co.id/v1",
-  },
-  {
-    id: "conn002",
-    name: "Payment Gateway",
-    type: "Webhook",
-    status: "Connected",
-    lastSync: "2024-03-31 13:15",
-    endpoint: "https://pg.example.com/webhook",
-  },
-  {
-    id: "conn003",
-    name: "CRM Integration",
-    type: "REST API",
-    status: "Disconnected",
-    lastSync: "Never",
-    endpoint: "https://crm.company.com/api",
-  },
-];
-
-export default function APIConnectionPage() {
-  const [testing, setTesting] = useState<string | null>(null);
-
-  const handleTestConnection = (id: string) => {
-    setTesting(id);
-    setTimeout(() => setTesting(null), 2000);
+  const checkConnection = () => {
+    setIsChecking(true);
+    // Simulate API check
+    setTimeout(() => {
+      setIsConnected(true);
+      setLastSync(new Date().toLocaleString("id-ID"));
+      setIsChecking(false);
+    }, 1500);
   };
+
+  const handleToggleConnection = () => {
+    if (isConnected) {
+      setIsConnected(false);
+      setLastSync("Disconnected");
+    } else {
+      setIsChecking(true);
+      setTimeout(() => {
+        setIsConnected(true);
+        setLastSync(new Date().toLocaleString("id-ID"));
+        setIsChecking(false);
+      }, 1500);
+    }
+  };
+
+  useEffect(() => {
+    // Initial check
+    checkConnection();
+  }, []);
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-semibold text-gray-900">API Connection</h2>
-        <button className="flex items-center gap-2 bg-bni-primary hover:bg-bni-dark text-white px-4 py-2 rounded-lg text-sm font-medium">
-          <Database className="w-4 h-4" />
-          Add Connection
-        </button>
+        <h2 className="text-xl font-semibold text-gray-900">Paper.id Connection</h2>
       </div>
 
-      {/* Connection Cards */}
-      <div className="grid gap-4">
-        {connections.map((conn) => (
-          <div key={conn.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                  conn.status === "Connected" ? "bg-success/10 text-success" : "bg-gray-100 text-gray-500"
-                }`}>
-                  <Database className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">{conn.name}</h3>
-                  <p className="text-sm text-gray-500">{conn.type}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                {conn.status === "Connected" ? (
-                  <span className="flex items-center gap-1 px-2.5 py-1 text-xs bg-success/10 text-success rounded-full">
-                    <CheckCircle className="w-3 h-3" />
-                    Connected
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-1 px-2.5 py-1 text-xs bg-danger/10 text-danger rounded-full">
-                    <XCircle className="w-3 h-3" />
-                    Disconnected
-                  </span>
-                )}
-              </div>
+      {/* Main Connection Card */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
+              isConnected 
+                ? "bg-success/10 text-success" 
+                : "bg-gray-100 text-gray-400"
+            }`}>
+              <FileText className="w-8 h-8" />
             </div>
-
-            <div className="space-y-2 mb-4">
-              <div className="flex items-center gap-2 text-sm">
-                <Globe className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-600">{conn.endpoint}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Key className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-600">API Key: ••••••••••••</span>
-              </div>
-              <div className="text-sm text-gray-500">
-                Last sync: {conn.lastSync}
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <button
-                onClick={() => handleTestConnection(conn.id)}
-                disabled={testing === conn.id}
-                className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
-              >
-                {testing === conn.id ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
-                    Testing...
-                  </>
-                ) : (
-                  <>
-                    <RefreshCw className="w-4 h-4" />
-                    Test Connection
-                  </>
-                )}
-              </button>
-              
-              <button className="px-4 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
-                Edit
-              </button>
-              
-              {conn.status === "Connected" ? (
-                <button className="px-4 py-2 border border-danger text-danger rounded-lg text-sm hover:bg-red-50">
-                  Disconnect
-                </button>
-              ) : (
-                <button className="px-4 py-2 bg-bni-primary text-white rounded-lg text-sm hover:bg-bni-dark">
-                  Connect
-                </button>
-              )}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900">Paper.id Integration</h3>
+              <p className="text-sm text-gray-500">Invoice & Payment Management</p>
             </div>
           </div>
-        ))}
-      </div>
+          
+          <div className="flex items-center gap-3">
+            {isConnected === null ? (
+              <span className="flex items-center gap-2 px-4 py-2 text-sm text-gray-500">
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" />
+                Checking...
+              </span>
+            ) : isConnected ? (
+              <span className="flex items-center gap-2 px-4 py-2 text-sm bg-success/10 text-success rounded-full">
+                <CheckCircle className="w-4 h-4" />
+                Connected
+              </span>
+            ) : (
+              <span className="flex items-center gap-2 px-4 py-2 text-sm bg-danger/10 text-danger rounded-full">
+                <XCircle className="w-4 h-4" />
+                Disconnected
+              </span>
+            )}
+          </div>
+        </div>
 
-      {/* API Documentation */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">API Documentation</h3>
-        <div className="space-y-4">
+        {/* Connection Details */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">Base URL</h4>
-            <code className="text-sm bg-gray-100 px-2 py-1 rounded">https://api.bnipayment.com/v1</code>
+            <div className="flex items-center gap-2 text-gray-500 mb-1">
+              <Clock className="w-4 h-4" />
+              <span className="text-xs uppercase">Last Sync</span>
+            </div>
+            <p className="text-sm font-medium text-gray-900">{lastSync}</p>
           </div>
           
           <div className="p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-medium text-gray-900 mb-2">Authentication</h4>
-            <p className="text-sm text-gray-600">
-              Gunakan API Key yang tersedia di pengaturan untuk autentikasi.
-              Sertakan dalam header: <code className="bg-gray-100 px-1 rounded">Authorization: Bearer YOUR_API_KEY</code>
+            <div className="flex items-center gap-2 text-gray-500 mb-1">
+              <Link2 className="w-4 h-4" />
+              <span className="text-xs uppercase">Endpoint</span>
+            </div>
+            <p className="text-sm font-medium text-gray-900">api.paper.id/v1</p>
+          </div>
+          
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2 text-gray-500 mb-1">
+              <FileText className="w-4 h-4" />
+              <span className="text-xs uppercase">Invoices Synced</span>
+            </div>
+            <p className="text-sm font-medium text-gray-900">
+              {isConnected ? "1,247 invoices" : "-"}
             </p>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={checkConnection}
+            disabled={isChecking}
+            className="flex items-center justify-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+          >
+            {isChecking ? (
+              <>
+                <div className="w-4 h-4 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+                Checking...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="w-4 h-4" />
+                Check Connection
+              </>
+            )}
+          </button>
+          
+          <button
+            onClick={handleToggleConnection}
+            className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${
+              isConnected
+                ? "border border-danger text-danger hover:bg-red-50"
+                : "bg-bni-primary text-white hover:bg-bni-dark"
+            }`}
+          >
+            {isConnected ? (
+              <>
+                <XCircle className="w-4 h-4" />
+                Disconnect
+              </>
+            ) : (
+              <>
+                <CheckCircle className="w-4 h-4" />
+                Connect to Paper.id
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Sync Status */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Sync Status</h3>
+        
+        <div className="space-y-4">
+          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-success" />
+              <div>
+                <p className="text-sm font-medium text-gray-900">Invoice Data</p>
+                <p className="text-xs text-gray-500">Last synced: {isConnected ? "2 minutes ago" : "-"}</p>
+              </div>
+            </div>
+            <span className="text-xs text-gray-500">
+              {isConnected ? "Real-time sync" : "Not synced"}
+            </span>
+          </div>
+          
+          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-success" />
+              <div>
+                <p className="text-sm font-medium text-gray-900">Payment Status</p>
+                <p className="text-xs text-gray-500">Last synced: {isConnected ? "5 minutes ago" : "-"}</p>
+              </div>
+            </div>
+            <span className="text-xs text-gray-500">
+              {isConnected ? "Real-time sync" : "Not synced"}
+            </span>
+          </div>
+          
+          <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-3">
+              <AlertTriangle className={`w-5 h-5 ${isConnected ? "text-warning" : "text-gray-400"}`} />
+              <div>
+                <p className="text-sm font-medium text-gray-900">Failed Syncs</p>
+                <p className="text-xs text-gray-500">Last 24 hours</p>
+              </div>
+            </div>
+            <span className={`text-sm font-medium ${isConnected ? "text-warning" : "text-gray-400"}`}>
+              {isConnected ? "3 failed" : "-"}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* API Configuration */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">API Configuration</h3>
+        
+        <div className="space-y-4">
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-900">API Key</span>
+              <button className="text-xs text-bni-primary hover:underline">
+                Edit
+              </button>
+            </div>
+            <code className="text-sm text-gray-600">••••••••••••••••••••••••••••••</code>
+          </div>
+          
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-900">Webhook URL</span>
+              <button className="text-xs text-bni-primary hover:underline">
+                Copy
+              </button>
+            </div>
+            <code className="text-sm text-gray-600">https://bnipayment.com/api/webhooks/paperid</code>
+          </div>
+          
+          <div className="p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-900">Sync Frequency</span>
+              <span className="text-xs text-gray-500">Real-time</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="bg-bni-primary h-2 rounded-full" style={{ width: "100%" }} />
+            </div>
           </div>
         </div>
       </div>

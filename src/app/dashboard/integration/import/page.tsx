@@ -5,12 +5,12 @@ import { Download, Upload, FileSpreadsheet, CheckCircle, AlertCircle, Eye, Trash
 
 // Dummy data untuk preview import results - chapter sesuai dataset BNI
 const importedData = [
-  { id: "imp001", name: "John Doe", email: "john@example.com", chapter: "Rise", status: "Success", importDate: "2024-03-31" },
-  { id: "imp002", name: "Jane Smith", email: "jane@example.com", chapter: "Grow", status: "Success", importDate: "2024-03-31" },
-  { id: "imp003", name: "Bob Johnson", email: "bob@example.com", chapter: "Amplify", status: "Failed", importDate: "2024-03-31" },
-  { id: "imp004", name: "Alice Brown", email: "alice@example.com", chapter: "Glorify", status: "Success", importDate: "2024-03-31" },
-  { id: "imp005", name: "Charlie Davis", email: "charlie@example.com", chapter: "Magnify", status: "Success", importDate: "2024-03-31" },
-  { id: "imp006", name: "Diana Evans", email: "diana@example.com", chapter: "Garuda", status: "Success", importDate: "2024-03-31" },
+  { id: "imp001", name: "John Doe", email: "john@example.com", chapter: "Rise", status: "Success", renewalDate: "2024-04-15" },
+  { id: "imp002", name: "Jane Smith", email: "jane@example.com", chapter: "Grow", status: "Success", renewalDate: "2024-05-20" },
+  { id: "imp003", name: "Bob Johnson", email: "bob@example.com", chapter: "Amplify", status: "Failed", renewalDate: "2024-06-10" },
+  { id: "imp004", name: "Alice Brown", email: "alice@example.com", chapter: "Glorify", status: "Success", renewalDate: "2024-07-01" },
+  { id: "imp005", name: "Charlie Davis", email: "charlie@example.com", chapter: "Magnify", status: "Success", renewalDate: "2024-08-15" },
+  { id: "imp006", name: "Diana Evans", email: "diana@example.com", chapter: "Garuda", status: "Success", renewalDate: "2024-09-20" },
 ];
 
 export default function ImportExportPage() {
@@ -128,7 +128,7 @@ export default function ImportExportPage() {
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Chapter</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tanggal</th>
+                <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tanggal Renewal</th>
                 <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
               </tr>
             </thead>
@@ -148,7 +148,7 @@ export default function ImportExportPage() {
                       {data.status}
                     </span>
                   </td>
-                  <td className="px-5 py-4 text-sm text-gray-600">{data.importDate}</td>
+                  <td className="px-5 py-4 text-sm text-gray-600">{data.renewalDate}</td>
                   <td className="px-5 py-4">
                     <div className="flex gap-2">
                       <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
@@ -192,8 +192,8 @@ export default function ImportExportPage() {
                   <span className="text-sm text-gray-900">{data.chapter}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-xs text-gray-500 uppercase">Tanggal</span>
-                  <span className="text-sm text-gray-900">{data.importDate}</span>
+                  <span className="text-xs text-gray-500 uppercase">Tanggal Renewal</span>
+                  <span className="text-sm text-gray-900">{data.renewalDate}</span>
                 </div>
               </div>
               <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
