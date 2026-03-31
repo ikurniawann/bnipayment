@@ -88,9 +88,8 @@ export const menuItems: MenuItem[] = [
     label: "Data Integration",
     iconName: "Link2",
     submenu: [
-      { label: "API Connections", href: "/dashboard/integration/api", iconName: "Database" },
-      { label: "Webhooks", href: "/dashboard/integration/webhooks", iconName: "RefreshCw" },
-      { label: "Import/Export", href: "/dashboard/integration/import", iconName: "FileText" },
+      { label: "Export / Import", href: "/dashboard/integration/import", iconName: "FileText" },
+      { label: "API Connection", href: "/dashboard/integration/api", iconName: "Database" },
     ],
   },
   {
