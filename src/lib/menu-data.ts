@@ -13,6 +13,7 @@ import {
   FileText,
   Settings,
   Database,
+  Link2,
 } from "lucide-react";
 
 export interface SubMenuItem {
@@ -45,6 +46,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   FileText,
   Settings,
   Database,
+  Link2,
 };
 
 export function getIcon(name: string) {
@@ -81,6 +83,15 @@ export const menuItems: MenuItem[] = [
     label: "Subscription Data",
     href: "/dashboard/subscription-data",
     iconName: "FileText",
+  },
+  {
+    label: "Data Integration",
+    iconName: "Link2",
+    submenu: [
+      { label: "API Connections", href: "/dashboard/integration/api", iconName: "Database" },
+      { label: "Webhooks", href: "/dashboard/integration/webhooks", iconName: "RefreshCw" },
+      { label: "Import/Export", href: "/dashboard/integration/import", iconName: "FileText" },
+    ],
   },
   {
     label: "Setting",
