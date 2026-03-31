@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { Download, Upload, FileSpreadsheet, CheckCircle, AlertCircle, Eye, Trash2 } from "lucide-react";
-import StatusBadge from "@/components/dashboard/StatusBadge";
 
 // Dummy data untuk preview import results
 const importedData = [
