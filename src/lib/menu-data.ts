@@ -89,7 +89,8 @@ export const menuItems: MenuItem[] = [
     iconName: "Link2",
     submenu: [
       { label: "Export / Import", href: "/dashboard/integration/import", iconName: "FileText" },
-      { label: "API Connection", href: "/dashboard/integration/api", iconName: "Database" },
+      { label: "Paper.id", href: "/dashboard/integration/api", iconName: "Database" },
+      { label: "Lark (Feishu)", href: "/dashboard/integration/lark", iconName: "Link2" },
     ],
   },
   {
