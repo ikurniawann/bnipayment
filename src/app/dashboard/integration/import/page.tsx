@@ -3,12 +3,14 @@
 import { useState, useRef } from "react";
 import { Download, Upload, FileSpreadsheet, CheckCircle, AlertCircle, Eye, Trash2 } from "lucide-react";
 
-// Dummy data untuk preview import results
+// Dummy data untuk preview import results - chapter sesuai dataset BNI
 const importedData = [
-  { id: "imp001", name: "John Doe", email: "john@example.com", chapter: "Jakarta", status: "Success", importDate: "2024-03-31" },
-  { id: "imp002", name: "Jane Smith", email: "jane@example.com", chapter: "Bandung", status: "Success", importDate: "2024-03-31" },
-  { id: "imp003", name: "Bob Johnson", email: "bob@example.com", chapter: "Surabaya", status: "Failed", importDate: "2024-03-31" },
-  { id: "imp004", name: "Alice Brown", email: "alice@example.com", chapter: "Jakarta", status: "Success", importDate: "2024-03-31" },
+  { id: "imp001", name: "John Doe", email: "john@example.com", chapter: "Rise", status: "Success", importDate: "2024-03-31" },
+  { id: "imp002", name: "Jane Smith", email: "jane@example.com", chapter: "Grow", status: "Success", importDate: "2024-03-31" },
+  { id: "imp003", name: "Bob Johnson", email: "bob@example.com", chapter: "Amplify", status: "Failed", importDate: "2024-03-31" },
+  { id: "imp004", name: "Alice Brown", email: "alice@example.com", chapter: "Glorify", status: "Success", importDate: "2024-03-31" },
+  { id: "imp005", name: "Charlie Davis", email: "charlie@example.com", chapter: "Magnify", status: "Success", importDate: "2024-03-31" },
+  { id: "imp006", name: "Diana Evans", email: "diana@example.com", chapter: "Garuda", status: "Success", importDate: "2024-03-31" },
 ];
 
 export default function ImportExportPage() {
@@ -17,8 +19,8 @@ export default function ImportExportPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDownloadTemplate = () => {
-    // Create a simple CSV template
-    const csvContent = "Name,Email,Chapter,Phone,Address\nJohn Doe,john@example.com,Jakarta,08123456789,Jl. Example 123\nJane Smith,jane@example.com,Bandung,08198765432,Jl. Sample 456";
+    // Create a simple CSV template dengan chapter BNI
+    const csvContent = "Name,Email,Chapter,Phone,Address\nAhmad Wijaya,ahmad@email.com,Rise,08123456789,Jl. Sudirman No. 123\nSiti Nurhaliza,siti@email.com,Grow,08198765432,Jl. Thamrin No. 456\nBudi Santoso,budi@email.com,Amplify,08123456780,Jl. Gatot Subroto No. 789\nDewi Lestari,dewi@email.com,Glorify,08199887766,Jl. Rasuna Said No. 101\nHendra Pratama,hendra@email.com,Magnify,08123456999,Jl. MH Thamrin No. 55\nRina Kusuma,rina@email.com,Garuda,08198881234,Jl. Asia Afrika No. 88";
     const blob = new Blob([csvContent], { type: "text/csv" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
